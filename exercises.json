@@ -1,0 +1,824 @@
+[
+  {
+    "id": 1,
+    "name": "Bench Press",
+    "primary_muscle": "Chest",
+    "auxiliary_muscles": {
+      "Triceps": 70,
+      "Front Delts": 40
+    },
+    "movement_pattern": "horizontal_push",
+    "equipment": "barbell"
+  },
+  {
+    "id": 2,
+    "name": "Incline Bench Press",
+    "primary_muscle": "Upper Chest",
+    "auxiliary_muscles": {
+      "Front Delts": 60,
+      "Triceps": 50
+    },
+    "movement_pattern": "horizontal_push",
+    "equipment": "barbell"
+  },
+  {
+    "id": 3,
+    "name": "Overhead Press",
+    "primary_muscle": "Shoulders",
+    "auxiliary_muscles": {
+      "Triceps": 60,
+      "Upper Chest": 30,
+      "Traps": 25
+    },
+    "movement_pattern": "vertical_push",
+    "equipment": "barbell"
+  },
+  {
+    "id": 4,
+    "name": "Dumbbell Shoulder Press",
+    "primary_muscle": "Shoulders",
+    "auxiliary_muscles": {
+      "Triceps": 55,
+      "Upper Chest": 25
+    },
+    "movement_pattern": "vertical_push",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 5,
+    "name": "Push Ups",
+    "primary_muscle": "Chest",
+    "auxiliary_muscles": {
+      "Triceps": 65,
+      "Front Delts": 35
+    },
+    "movement_pattern": "horizontal_push",
+    "equipment": "bodyweight"
+  },
+  {
+    "id": 6,
+    "name": "Dips",
+    "primary_muscle": "Chest",
+    "auxiliary_muscles": {
+      "Triceps": 70,
+      "Front Delts": 30
+    },
+    "movement_pattern": "horizontal_push",
+    "equipment": "bodyweight"
+  },
+  {
+    "id": 7,
+    "name": "Barbell Row",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Rhomboids": 70,
+      "Rear Delts": 60,
+      "Biceps": 50,
+      "Lower Back": 40,
+      "Traps": 35
+    },
+    "movement_pattern": "horizontal_pull",
+    "equipment": "barbell"
+  },
+  {
+    "id": 8,
+    "name": "Pendlay Row",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Rhomboids": 75,
+      "Rear Delts": 65,
+      "Traps": 50,
+      "Biceps": 45
+    },
+    "movement_pattern": "horizontal_pull",
+    "equipment": "barbell"
+  },
+  {
+    "id": 9,
+    "name": "Cable Row",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Rhomboids": 65,
+      "Rear Delts": 55,
+      "Biceps": 50
+    },
+    "movement_pattern": "horizontal_pull",
+    "equipment": "cable"
+  },
+  {
+    "id": 10,
+    "name": "T-Bar Row",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Rhomboids": 70,
+      "Rear Delts": 60,
+      "Traps": 45,
+      "Biceps": 40
+    },
+    "movement_pattern": "horizontal_pull",
+    "equipment": "machine"
+  },
+  {
+    "id": 11,
+    "name": "Pull Ups",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Biceps": 65,
+      "Rear Delts": 40,
+      "Traps": 35,
+      "Rhomboids": 30
+    },
+    "movement_pattern": "vertical_pull",
+    "equipment": "bodyweight"
+  },
+  {
+    "id": 12,
+    "name": "Chin Ups",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Biceps": 80,
+      "Rear Delts": 35,
+      "Traps": 30
+    },
+    "movement_pattern": "vertical_pull",
+    "equipment": "bodyweight"
+  },
+  {
+    "id": 13,
+    "name": "Lat Pulldown",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Biceps": 60,
+      "Rear Delts": 35,
+      "Traps": 30
+    },
+    "movement_pattern": "vertical_pull",
+    "equipment": "cable"
+  },
+  {
+    "id": 14,
+    "name": "Barbell Deadlift",
+    "primary_muscle": "Back",
+    "auxiliary_muscles": {
+      "Glutes": 80,
+      "Hamstrings": 65,
+      "Traps": 60,
+      "Quads": 75,
+      "Forearms": 80
+    },
+    "movement_pattern": "hinge",
+    "equipment": "barbell"
+  },
+  {
+    "id": 15,
+    "name": "Romanian Deadlift",
+    "primary_muscle": "Hamstrings",
+    "auxiliary_muscles": {
+      "Glutes": 80,
+      "Lower Back": 70,
+      "Traps": 40
+    },
+    "movement_pattern": "hinge",
+    "equipment": "barbell"
+  },
+  {
+    "id": 16,
+    "name": "Sumo Deadlift",
+    "primary_muscle": "Glutes",
+    "auxiliary_muscles": {
+      "Quads": 75,
+      "Hamstrings": 60,
+      "Traps": 55,
+      "Adductors": 70
+    },
+    "movement_pattern": "hinge",
+    "equipment": "barbell"
+  },
+  {
+    "id": 17,
+    "name": "Good Mornings",
+    "primary_muscle": "Hamstrings",
+    "auxiliary_muscles": {
+      "Lower Back": 80,
+      "Glutes": 70
+    },
+    "movement_pattern": "hinge",
+    "equipment": "barbell"
+  },
+  {
+    "id": 18,
+    "name": "Barbell Back Squat",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {
+      "Glutes": 80,
+      "Hamstrings": 50,
+      "Lower Back": 40,
+      "Adductors": 45
+    },
+    "movement_pattern": "squat",
+    "equipment": "barbell"
+  },
+  {
+    "id": 19,
+    "name": "Front Squat",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {
+      "Glutes": 75,
+      "Upper Back": 70,
+      "Core": 60,
+      "Hamstrings": 40
+    },
+    "movement_pattern": "squat",
+    "equipment": "barbell"
+  },
+  {
+    "id": 20,
+    "name": "Goblet Squat",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {
+      "Glutes": 70,
+      "Core": 50,
+      "Hamstrings": 35
+    },
+    "movement_pattern": "squat",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 21,
+    "name": "Leg Press",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {
+      "Glutes": 60,
+      "Hamstrings": 40
+    },
+    "movement_pattern": "squat",
+    "equipment": "machine"
+  },
+  {
+    "id": 22,
+    "name": "Bulgarian Split Squat",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {
+      "Glutes": 75,
+      "Hamstrings": 45,
+      "Core": 50
+    },
+    "movement_pattern": "squat",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 23,
+    "name": "Hack Squat",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {
+      "Glutes": 55,
+      "Hamstrings": 35
+    },
+    "movement_pattern": "squat",
+    "equipment": "machine"
+  },
+  {
+    "id": 24,
+    "name": "Lying Leg Curl",
+    "primary_muscle": "Hamstrings",
+    "auxiliary_muscles": {
+      "Calves": 30
+    },
+    "movement_pattern": "leg_curl",
+    "equipment": "machine"
+  },
+  {
+    "id": 25,
+    "name": "Seated Leg Curl",
+    "primary_muscle": "Hamstrings",
+    "auxiliary_muscles": {
+      "Calves": 25
+    },
+    "movement_pattern": "leg_curl",
+    "equipment": "machine"
+  },
+  {
+    "id": 26,
+    "name": "Leg Extension",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {},
+    "movement_pattern": "leg_extension",
+    "equipment": "machine"
+  },
+  {
+    "id": 27,
+    "name": "Calf Raise",
+    "primary_muscle": "Calves",
+    "auxiliary_muscles": {},
+    "movement_pattern": "calf_raise",
+    "equipment": "machine"
+  },
+  {
+    "id": 28,
+    "name": "Standing Calf Raise",
+    "primary_muscle": "Calves",
+    "auxiliary_muscles": {},
+    "movement_pattern": "calf_raise",
+    "equipment": "machine"
+  },
+  {
+    "id": 29,
+    "name": "Barbell Curl",
+    "primary_muscle": "Biceps",
+    "auxiliary_muscles": {
+      "Forearms": 50
+    },
+    "movement_pattern": "curl",
+    "equipment": "barbell"
+  },
+  {
+    "id": 30,
+    "name": "Dumbbell Curl",
+    "primary_muscle": "Biceps",
+    "auxiliary_muscles": {
+      "Forearms": 45
+    },
+    "movement_pattern": "curl",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 31,
+    "name": "Hammer Curl",
+    "primary_muscle": "Brachialis",
+    "auxiliary_muscles": {
+      "Biceps": 70,
+      "Forearms": 60
+    },
+    "movement_pattern": "curl",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 32,
+    "name": "Preacher Curl",
+    "primary_muscle": "Biceps",
+    "auxiliary_muscles": {
+      "Forearms": 40
+    },
+    "movement_pattern": "curl",
+    "equipment": "machine"
+  },
+  {
+    "id": 33,
+    "name": "Incline Dumbbell Curl",
+    "primary_muscle": "Biceps",
+    "auxiliary_muscles": {
+      "Forearms": 40
+    },
+    "movement_pattern": "curl",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 34,
+    "name": "Close Grip Bench Press",
+    "primary_muscle": "Triceps",
+    "auxiliary_muscles": {
+      "Chest": 50,
+      "Front Delts": 35
+    },
+    "movement_pattern": "tricep_extension",
+    "equipment": "barbell"
+  },
+  {
+    "id": 35,
+    "name": "Tricep Pushdown",
+    "primary_muscle": "Triceps",
+    "auxiliary_muscles": {},
+    "movement_pattern": "tricep_extension",
+    "equipment": "cable"
+  },
+  {
+    "id": 36,
+    "name": "Overhead Tricep Extension",
+    "primary_muscle": "Triceps",
+    "auxiliary_muscles": {
+      "Shoulders": 20
+    },
+    "movement_pattern": "tricep_extension",
+    "equipment": "cable"
+  },
+  {
+    "id": 37,
+    "name": "Skull Crushers",
+    "primary_muscle": "Triceps",
+    "auxiliary_muscles": {
+      "Chest": 25
+    },
+    "movement_pattern": "tricep_extension",
+    "equipment": "barbell"
+  },
+  {
+    "id": 38,
+    "name": "Dumbbell Tricep Extension",
+    "primary_muscle": "Triceps",
+    "auxiliary_muscles": {},
+    "movement_pattern": "tricep_extension",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 39,
+    "name": "Lateral Raise",
+    "primary_muscle": "Side Delts",
+    "auxiliary_muscles": {
+      "Traps": 40
+    },
+    "movement_pattern": "lateral_raise",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 40,
+    "name": "Cable Lateral Raise",
+    "primary_muscle": "Side Delts",
+    "auxiliary_muscles": {
+      "Traps": 35
+    },
+    "movement_pattern": "lateral_raise",
+    "equipment": "cable"
+  },
+  {
+    "id": 41,
+    "name": "Face Pull",
+    "primary_muscle": "Rear Delts",
+    "auxiliary_muscles": {
+      "Rotator Cuff": 70,
+      "Traps": 50,
+      "Rhomboids": 40
+    },
+    "movement_pattern": "face_pull",
+    "equipment": "cable"
+  },
+  {
+    "id": 42,
+    "name": "Reverse Pec Deck",
+    "primary_muscle": "Rear Delts",
+    "auxiliary_muscles": {
+      "Traps": 35,
+      "Rhomboids": 30
+    },
+    "movement_pattern": "face_pull",
+    "equipment": "machine"
+  },
+  {
+    "id": 43,
+    "name": "Shrug",
+    "primary_muscle": "Traps",
+    "auxiliary_muscles": {
+      "Forearms": 40
+    },
+    "movement_pattern": "shrug",
+    "equipment": "barbell"
+  },
+  {
+    "id": 44,
+    "name": "Dumbbell Shrug",
+    "primary_muscle": "Traps",
+    "auxiliary_muscles": {
+      "Forearms": 35
+    },
+    "movement_pattern": "shrug",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 45,
+    "name": "Farmers Walk",
+    "primary_muscle": "Forearms",
+    "auxiliary_muscles": {
+      "Traps": 70,
+      "Core": 60,
+      "Calves": 40,
+      "Glutes": 30
+    },
+    "movement_pattern": "carry",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 46,
+    "name": "Suitcase Carry",
+    "primary_muscle": "Core",
+    "auxiliary_muscles": {
+      "Forearms": 60,
+      "Obliques": 80
+    },
+    "movement_pattern": "carry",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 47,
+    "name": "Plank",
+    "primary_muscle": "Core",
+    "auxiliary_muscles": {
+      "Shoulders": 30,
+      "Glutes": 25
+    },
+    "movement_pattern": "anti_extension",
+    "equipment": "bodyweight"
+  },
+  {
+    "id": 48,
+    "name": "Hanging Leg Raise",
+    "primary_muscle": "Abs",
+    "auxiliary_muscles": {
+      "Hip Flexors": 70,
+      "Forearms": 40
+    },
+    "movement_pattern": "flexion",
+    "equipment": "bodyweight"
+  },
+  {
+    "id": 49,
+    "name": "Cable Crunch",
+    "primary_muscle": "Abs",
+    "auxiliary_muscles": {},
+    "movement_pattern": "flexion",
+    "equipment": "cable"
+  },
+  {
+    "id": 50,
+    "name": "Ab Wheel Rollout",
+    "primary_muscle": "Abs",
+    "auxiliary_muscles": {
+      "Lats": 40,
+      "Shoulders": 35
+    },
+    "movement_pattern": "anti_extension",
+    "equipment": "bodyweight"
+  },
+  {
+    "id": 51,
+    "name": "Hip Thrust",
+    "primary_muscle": "Glutes",
+    "auxiliary_muscles": {
+      "Hamstrings": 50
+    },
+    "movement_pattern": "hip_thrust",
+    "equipment": "barbell"
+  },
+  {
+    "id": 52,
+    "name": "Cable Pull Through",
+    "primary_muscle": "Glutes",
+    "auxiliary_muscles": {
+      "Hamstrings": 60,
+      "Lower Back": 30
+    },
+    "movement_pattern": "hip_thrust",
+    "equipment": "cable"
+  },
+  {
+    "id": 53,
+    "name": "Machine Hip Abduction",
+    "primary_muscle": "Glute Medius",
+    "auxiliary_muscles": {},
+    "movement_pattern": "hip_abduction",
+    "equipment": "machine"
+  },
+  {
+    "id": 54,
+    "name": "Cable Fly",
+    "primary_muscle": "Chest",
+    "auxiliary_muscles": {
+      "Front Delts": 30
+    },
+    "movement_pattern": "fly",
+    "equipment": "cable"
+  },
+  {
+    "id": 55,
+    "name": "Dumbbell Fly",
+    "primary_muscle": "Chest",
+    "auxiliary_muscles": {
+      "Front Delts": 35
+    },
+    "movement_pattern": "fly",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 56,
+    "name": "Reverse Fly",
+    "primary_muscle": "Rear Delts",
+    "auxiliary_muscles": {
+      "Traps": 45,
+      "Rhomboids": 40
+    },
+    "movement_pattern": "fly",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 57,
+    "name": "Lat Prayer",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Triceps": 30
+    },
+    "movement_pattern": "pullover",
+    "equipment": "cable"
+  },
+  {
+    "id": 58,
+    "name": "Dumbbell Pullover",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Chest": 50,
+      "Triceps": 40
+    },
+    "movement_pattern": "pullover",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 59,
+    "name": "Seated Cable Row",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Rhomboids": 60,
+      "Rear Delts": 50,
+      "Biceps": 50
+    },
+    "movement_pattern": "horizontal_pull",
+    "equipment": "cable"
+  },
+  {
+    "id": 60,
+    "name": "Single Arm Dumbbell Row",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Rhomboids": 55,
+      "Rear Delts": 45,
+      "Biceps": 55,
+      "Traps": 35
+    },
+    "movement_pattern": "horizontal_pull",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 61,
+    "name": "Incline Row",
+    "primary_muscle": "Upper Back",
+    "auxiliary_muscles": {
+      "Lats": 50,
+      "Rear Delts": 70,
+      "Rhomboids": 65,
+      "Biceps": 45
+    },
+    "movement_pattern": "horizontal_pull",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 62,
+    "name": "Chest Supported Row",
+    "primary_muscle": "Upper Back",
+    "auxiliary_muscles": {
+      "Lats": 55,
+      "Rear Delts": 65,
+      "Rhomboids": 70,
+      "Biceps": 40
+    },
+    "movement_pattern": "horizontal_pull",
+    "equipment": "machine"
+  },
+  {
+    "id": 63,
+    "name": "Arnold Press",
+    "primary_muscle": "Shoulders",
+    "auxiliary_muscles": {
+      "Triceps": 55,
+      "Upper Chest": 35
+    },
+    "movement_pattern": "vertical_push",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 64,
+    "name": "Landmine Press",
+    "primary_muscle": "Shoulders",
+    "auxiliary_muscles": {
+      "Upper Chest": 50,
+      "Triceps": 45,
+      "Core": 40
+    },
+    "movement_pattern": "vertical_push",
+    "equipment": "barbell"
+  },
+  {
+    "id": 65,
+    "name": "Deficit Deadlift",
+    "primary_muscle": "Back",
+    "auxiliary_muscles": {
+      "Glutes": 85,
+      "Hamstrings": 75,
+      "Quads": 55,
+      "Forearms": 80,
+      "Traps": 65
+    },
+    "movement_pattern": "hinge",
+    "equipment": "barbell"
+  },
+  {
+    "id": 66,
+    "name": "Rack Pull",
+    "primary_muscle": "Back",
+    "auxiliary_muscles": {
+      "Glutes": 70,
+      "Hamstrings": 50,
+      "Traps": 70,
+      "Forearms": 75
+    },
+    "movement_pattern": "hinge",
+    "equipment": "barbell"
+  },
+  {
+    "id": 67,
+    "name": "Pause Squat",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {
+      "Glutes": 80,
+      "Core": 70,
+      "Hamstrings": 50
+    },
+    "movement_pattern": "squat",
+    "equipment": "barbell"
+  },
+  {
+    "id": 68,
+    "name": "Box Squat",
+    "primary_muscle": "Glutes",
+    "auxiliary_muscles": {
+      "Quads": 75,
+      "Hamstrings": 55,
+      "Core": 50
+    },
+    "movement_pattern": "squat",
+    "equipment": "barbell"
+  },
+  {
+    "id": 69,
+    "name": "Walking Lunge",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {
+      "Glutes": 80,
+      "Hamstrings": 50,
+      "Calves": 40
+    },
+    "movement_pattern": "lunge",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 70,
+    "name": "Reverse Lunge",
+    "primary_muscle": "Glutes",
+    "auxiliary_muscles": {
+      "Quads": 70,
+      "Hamstrings": 55
+    },
+    "movement_pattern": "lunge",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 71,
+    "name": "Step Up",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {
+      "Glutes": 75,
+      "Calves": 45
+    },
+    "movement_pattern": "step_up",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 72,
+    "name": "Nordic Curl",
+    "primary_muscle": "Hamstrings",
+    "auxiliary_muscles": {
+      "Calves": 35
+    },
+    "movement_pattern": "leg_curl",
+    "equipment": "bodyweight"
+  },
+  {
+    "id": 73,
+    "name": "Tibialis Raise",
+    "primary_muscle": "Tibialis",
+    "auxiliary_muscles": {},
+    "movement_pattern": "tibialis_raise",
+    "equipment": "bodyweight"
+  },
+  {
+    "id": 74,
+    "name": "Wrist Curl",
+    "primary_muscle": "Forearms",
+    "auxiliary_muscles": {},
+    "movement_pattern": "wrist_curl",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 75,
+    "name": "Reverse Wrist Curl",
+    "primary_muscle": "Forearms",
+    "auxiliary_muscles": {},
+    "movement_pattern": "wrist_curl",
+    "equipment": "dumbbell"
+  }
+]
