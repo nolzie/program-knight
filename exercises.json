@@ -1,7 +1,7 @@
 [
   {
     "id": 1,
-    "name": "Bench Press",
+    "name": "Barbell Bench Press",
     "primary_muscle": "Chest",
     "auxiliary_muscles": {
       "Triceps": 70,
@@ -12,7 +12,7 @@
   },
   {
     "id": 2,
-    "name": "Incline Bench Press",
+    "name": "Barbell Incline Bench Press",
     "primary_muscle": "Upper Chest",
     "auxiliary_muscles": {
       "Front Delts": 60,
@@ -23,7 +23,7 @@
   },
   {
     "id": 3,
-    "name": "Overhead Press",
+    "name": "Barbell Overhead Press",
     "primary_muscle": "Shoulders",
     "auxiliary_muscles": {
       "Triceps": 60,
@@ -819,6 +819,120 @@
     "primary_muscle": "Forearms",
     "auxiliary_muscles": {},
     "movement_pattern": "wrist_curl",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 76,
+    "name": "Dumbbell Bench Press",
+    "primary_muscle": "Chest",
+    "auxiliary_muscles": {
+      "Triceps": 65,
+      "Front Delts": 45
+    },
+    "movement_pattern": "horizontal_push",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 77,
+    "name": "Dumbbell Incline Bench Press",
+    "primary_muscle": "Upper Chest",
+    "auxiliary_muscles": {
+      "Front Delts": 65,
+      "Triceps": 55
+    },
+    "movement_pattern": "horizontal_push",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 78,
+    "name": "Dumbbell Overhead Press",
+    "primary_muscle": "Shoulders",
+    "auxiliary_muscles": {
+      "Triceps": 55,
+      "Upper Chest": 30,
+      "Traps": 20
+    },
+    "movement_pattern": "vertical_push",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 79,
+    "name": "Dumbbell Row",
+    "primary_muscle": "Lats",
+    "auxiliary_muscles": {
+      "Rhomboids": 65,
+      "Rear Delts": 55,
+      "Biceps": 55,
+      "Lower Back": 35,
+      "Traps": 40
+    },
+    "movement_pattern": "horizontal_pull",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 80,
+    "name": "Dumbbell Romanian Deadlift",
+    "primary_muscle": "Hamstrings",
+    "auxiliary_muscles": {
+      "Glutes": 75,
+      "Lower Back": 65,
+      "Forearms": 40
+    },
+    "movement_pattern": "hinge",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 81,
+    "name": "Dumbbell Squat",
+    "primary_muscle": "Quads",
+    "auxiliary_muscles": {
+      "Glutes": 70,
+      "Hamstrings": 45,
+      "Core": 45
+    },
+    "movement_pattern": "squat",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 82,
+    "name": "Dumbbell Close Grip Press",
+    "primary_muscle": "Triceps",
+    "auxiliary_muscles": {
+      "Chest": 45,
+      "Front Delts": 30
+    },
+    "movement_pattern": "tricep_extension",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 83,
+    "name": "Dumbbell Skull Crusher",
+    "primary_muscle": "Triceps",
+    "auxiliary_muscles": {
+      "Chest": 20
+    },
+    "movement_pattern": "tricep_extension",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 84,
+    "name": "Dumbbell Hip Thrust",
+    "primary_muscle": "Glutes",
+    "auxiliary_muscles": {
+      "Hamstrings": 45,
+      "Core": 25
+    },
+    "movement_pattern": "hip_thrust",
+    "equipment": "dumbbell"
+  },
+  {
+    "id": 85,
+    "name": "Dumbbell Lateral Raise",
+    "primary_muscle": "Side Delts",
+    "auxiliary_muscles": {
+      "Traps": 35
+    },
+    "movement_pattern": "lateral_raise",
     "equipment": "dumbbell"
   }
 ]
