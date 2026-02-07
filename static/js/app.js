@@ -149,6 +149,12 @@ initProgramData();
 // Modal functionality
 addExerciseBtn.addEventListener('click', () => {
     addExerciseModal.classList.remove('hidden');
+    // Clear form
+    document.getElementById('new-exercise-name').value = '';
+    document.getElementById('new-exercise-primary-muscle').value = '';
+    document.getElementById('new-exercise-movement-pattern').value = '';
+    document.getElementById('new-exercise-equipment').value = '';
+    document.getElementById('aux-muscles-container').innerHTML = '';
 });
 
 cancelModalBtn.addEventListener('click', () => {
@@ -160,6 +166,123 @@ addExerciseModal.addEventListener('click', (e) => {
         addExerciseModal.classList.add('hidden');
     }
 });
+
+// Add auxiliary muscle input
+const addAuxMuscleBtn = document.getElementById('add-aux-muscle-btn');
+const auxMusclesContainer = document.getElementById('aux-muscles-container');
+
+addAuxMuscleBtn.addEventListener('click', () => {
+    const auxMuscleRow = document.createElement('div');
+    auxMuscleRow.className = 'flex items-center gap-2 aux-muscle-row';
+    auxMuscleRow.innerHTML = `
+        <select class="aux-muscle-select flex-1 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-knight-blue">
+            <option value="">Select muscle...</option>
+            <option value="Chest">Chest</option>
+            <option value="Upper Chest">Upper Chest</option>
+            <option value="Back">Back</option>
+            <option value="Lats">Lats</option>
+            <option value="Upper Back">Upper Back</option>
+            <option value="Quads">Quads</option>
+            <option value="Hamstrings">Hamstrings</option>
+            <option value="Glutes">Glutes</option>
+            <option value="Shoulders">Shoulders</option>
+            <option value="Side Delts">Side Delts</option>
+            <option value="Rear Delts">Rear Delts</option>
+            <option value="Front Delts">Front Delts</option>
+            <option value="Biceps">Biceps</option>
+            <option value="Triceps">Triceps</option>
+            <option value="Brachialis">Brachialis</option>
+            <option value="Calves">Calves</option>
+            <option value="Abs">Abs</option>
+            <option value="Core">Core</option>
+            <option value="Forearms">Forearms</option>
+            <option value="Traps">Traps</option>
+            <option value="Glute Medius">Glute Medius</option>
+            <option value="Adductors">Adductors</option>
+            <option value="Tibialis">Tibialis</option>
+            <option value="Lower Back">Lower Back</option>
+            <option value="Hip Flexors">Hip Flexors</option>
+            <option value="Rotator Cuff">Rotator Cuff</option>
+            <option value="Rhomboids">Rhomboids</option>
+            <option value="Obliques">Obliques</option>
+        </select>
+        <input type="number" class="aux-muscle-percentage w-20 px-2 py-1 text-sm border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-knight-blue" placeholder="%" min="1" max="100" value="50">
+        <button class="remove-aux-muscle text-red-500 hover:text-red-700 px-2" title="Remove">×</button>
+    `;
+    
+    auxMuscleRow.querySelector('.remove-aux-muscle').addEventListener('click', () => {
+        auxMuscleRow.remove();
+    });
+    
+    auxMusclesContainer.appendChild(auxMuscleRow);
+});
+
+// Save new exercise
+document.getElementById('save-new-exercise').addEventListener('click', () => {
+    const name = document.getElementById('new-exercise-name').value.trim();
+    const primaryMuscle = document.getElementById('new-exercise-primary-muscle').value;
+    const movementPattern = document.getElementById('new-exercise-movement-pattern').value;
+    const equipment = document.getElementById('new-exercise-equipment').value;
+    
+    if (!name || !primaryMuscle || !movementPattern || !equipment) {
+        alert('Please fill in all required fields');
+        return;
+    }
+    
+    // Collect auxiliary muscles
+    const auxiliaryMuscles = {};
+    document.querySelectorAll('.aux-muscle-row').forEach(row => {
+        const muscle = row.querySelector('.aux-muscle-select').value;
+        const percentage = parseInt(row.querySelector('.aux-muscle-percentage').value);
+        if (muscle && percentage) {
+            auxiliaryMuscles[muscle] = percentage;
+        }
+    });
+    
+    // Create new exercise
+    const newExercise = {
+        id: Math.max(...exercises.map(e => e.id), 0) + 1,
+        name: name,
+        primary_muscle: primaryMuscle,
+        auxiliary_muscles: auxiliaryMuscles,
+        movement_pattern: movementPattern,
+        equipment: equipment
+    };
+    
+    // Add to exercises array
+    exercises.push(newExercise);
+    
+    // Save custom exercises to localStorage
+    saveCustomExercises();
+    
+    // Re-render exercise list
+    renderExercises(exercises);
+    
+    // Close modal
+    addExerciseModal.classList.add('hidden');
+    
+    console.log('Added new exercise:', newExercise);
+});
+
+// Save custom exercises to localStorage
+function saveCustomExercises() {
+    const customExercises = exercises.filter(e => e.id > 75); // Only save custom exercises
+    localStorage.setItem('customExercises', JSON.stringify(customExercises));
+}
+
+// Load custom exercises from localStorage
+function loadCustomExercises() {
+    const saved = localStorage.getItem('customExercises');
+    if (saved) {
+        const customExercises = JSON.parse(saved);
+        customExercises.forEach(exercise => {
+            // Check if exercise already exists
+            if (!exercises.find(e => e.id === exercise.id)) {
+                exercises.push(exercise);
+            }
+        });
+    }
+}
 
 // Exercise Config Modal functionality
 function openExerciseConfigModal(exercise, targetDay) {
@@ -307,6 +430,32 @@ function deleteExerciseFromDay(dayIndex, exerciseId, exerciseElement, dayElement
     console.log('Deleted exercise from day', dayIndex);
 }
 
+// Save/Export/Import button event listeners
+document.getElementById('save-program-btn').addEventListener('click', () => {
+    saveProgramToLocalStorage();
+    alert('Program saved successfully!');
+});
+
+document.getElementById('export-program-btn').addEventListener('click', () => {
+    const filename = prompt('Enter program name (optional):', 'my-program');
+    exportProgramToFile(filename);
+});
+
+document.getElementById('import-program-btn').addEventListener('click', () => {
+    document.getElementById('import-file-input').click();
+});
+
+document.getElementById('import-file-input').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (file) {
+        if (confirm('This will replace your current program. Continue?')) {
+            importProgramFromFile(file);
+        }
+    }
+    // Reset input so same file can be selected again
+    e.target.value = '';
+});
+
 // Helper function to format auxiliary muscles
 function formatAuxMuscles(auxMuscles) {
     if (!auxMuscles || Object.keys(auxMuscles).length === 0) {
@@ -420,6 +569,12 @@ async function loadExercises() {
 // Load exercises when page loads
 loadExercises();
 
+// Load custom exercises from localStorage after base exercises load
+setTimeout(() => {
+    loadCustomExercises();
+    renderExercises(exercises);
+}, 100);
+
 // Initialize metrics after page loads
 document.addEventListener('DOMContentLoaded', () => {
     // Register built-in metrics if MetricRegistry is available
@@ -441,4 +596,249 @@ document.addEventListener('DOMContentLoaded', () => {
         // Initial metrics render
         updateMetricsUI();
     }
+    
+    // Load saved program data if exists
+    loadProgramFromLocalStorage();
 });
+
+// ==================== LOCAL SAVE/LOAD FUNCTIONALITY ====================
+
+// Save program to localStorage
+function saveProgramToLocalStorage() {
+    const programDataToSave = {
+        version: '1.0',
+        savedAt: new Date().toISOString(),
+        programData: programData,
+        exercises: exercises.filter(e => e.id <= 75).map(e => e.id) // Save refs to base exercises
+    };
+    
+    localStorage.setItem('programKnightProgram', JSON.stringify(programDataToSave));
+    console.log('Program saved to localStorage');
+    
+    // Also trigger auto-save to file
+    autoSaveToFile();
+}
+
+// Load program from localStorage
+function loadProgramFromLocalStorage() {
+    const saved = localStorage.getItem('programKnightProgram');
+    if (!saved) {
+        console.log('No saved program found in localStorage');
+        return;
+    }
+    
+    try {
+        const savedData = JSON.parse(saved);
+        
+        if (savedData.programData) {
+            // Clear current program data
+            initProgramData();
+            
+            // Restore program data
+            Object.keys(savedData.programData).forEach(dayIndex => {
+                const dayExercises = savedData.programData[dayIndex];
+                programData[dayIndex] = dayExercises;
+                
+                // Re-render exercises to calendar
+                const dayElement = calendarDays[dayIndex];
+                if (dayElement && dayExercises.length > 0) {
+                    // Clear placeholder
+                    const placeholder = dayElement.querySelector('.text-gray-400');
+                    if (placeholder) placeholder.remove();
+                    
+                    // Add exercises
+                    dayExercises.forEach(exerciseEntry => {
+                        addExerciseToCalendarUI(dayElement, exerciseEntry, parseInt(dayIndex));
+                    });
+                }
+            });
+            
+            updateMetricsUI();
+            console.log('Program loaded from localStorage (saved at:', savedData.savedAt, ')');
+        }
+    } catch (error) {
+        console.error('Error loading program from localStorage:', error);
+    }
+}
+
+// Auto-save program data to a JSON file
+function autoSaveToFile() {
+    const programDataToSave = {
+        version: '1.0',
+        savedAt: new Date().toISOString(),
+        programData: programData
+    };
+    
+    const blob = new Blob([JSON.stringify(programDataToSave, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    // Create a hidden download link
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.download = `program-knight-autosave-${new Date().toISOString().split('T')[0]}.json`;
+    
+    // Store the URL for manual download
+    window.lastAutoSaveUrl = url;
+    window.lastAutoSaveFilename = downloadLink.download;
+    
+    console.log('Program auto-saved (ready for download)');
+}
+
+// Export program to JSON file
+function exportProgramToFile(filename = null) {
+    const programDataToSave = {
+        version: '1.0',
+        exportedAt: new Date().toISOString(),
+        programName: filename || 'My Program',
+        programData: programData,
+        exercises: exercises.filter(e => e.id <= 75).map(e => ({ id: e.id, name: e.name }))
+    };
+    
+    const blob = new Blob([JSON.stringify(programDataToSave, null, 2)], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    
+    const downloadLink = document.createElement('a');
+    downloadLink.href = url;
+    downloadLink.download = filename ? `${filename}.json` : `program-knight-export-${new Date().toISOString().split('T')[0]}.json`;
+    document.body.appendChild(downloadLink);
+    downloadLink.click();
+    document.body.removeChild(downloadLink);
+    
+    URL.revokeObjectURL(url);
+    console.log('Program exported to file');
+}
+
+// Import program from JSON file
+function importProgramFromFile(file) {
+    const reader = new FileReader();
+    
+    reader.onload = (e) => {
+        try {
+            const importedData = JSON.parse(e.target.result);
+            
+            if (importedData.programData) {
+                // Clear current calendar
+                calendarDays.forEach((day, index) => {
+                    day.innerHTML = '<span class="text-sm text-gray-400">Drop here</span>';
+                });
+                
+                // Clear program data
+                initProgramData();
+                
+                // Restore program data
+                Object.keys(importedData.programData).forEach(dayIndex => {
+                    const dayExercises = importedData.programData[dayIndex];
+                    programData[dayIndex] = dayExercises;
+                    
+                    // Re-render exercises to calendar
+                    const dayElement = calendarDays[dayIndex];
+                    if (dayElement && dayExercises.length > 0) {
+                        // Clear placeholder
+                        const placeholder = dayElement.querySelector('.text-gray-400');
+                        if (placeholder) placeholder.remove();
+                        
+                        // Add exercises
+                        dayExercises.forEach(exerciseEntry => {
+                            addExerciseToCalendarUI(dayElement, exerciseEntry, parseInt(dayIndex));
+                        });
+                    }
+                });
+                
+                // Save to localStorage
+                saveProgramToLocalStorage();
+                
+                // Update metrics
+                updateMetricsUI();
+                
+                alert('Program imported successfully!');
+                console.log('Program imported from file (exported at:', importedData.exportedAt, ')');
+            } else {
+                alert('Invalid program file format');
+            }
+        } catch (error) {
+            console.error('Error importing program:', error);
+            alert('Error importing program. Please check the file format.');
+        }
+    };
+    
+    reader.readAsText(file);
+}
+
+// Auto-save when program data changes
+function triggerAutoSave() {
+    // Debounce auto-save to avoid saving too frequently
+    if (window.autoSaveTimeout) {
+        clearTimeout(window.autoSaveTimeout);
+    }
+    
+    window.autoSaveTimeout = setTimeout(() => {
+        saveProgramToLocalStorage();
+    }, 2000); // Auto-save 2 seconds after last change
+}
+
+// Modify saveExerciseConfigBtn to trigger auto-save
+saveExerciseConfigBtn.addEventListener('click', () => {
+    if (!currentExerciseConfig || !currentTargetDay) return;
+    
+    const numSets = parseInt(configSetsInput.value) || 3;
+    const setRows = setsContainer.querySelectorAll('.flex');
+    const sets = [];
+    
+    setRows.forEach((row, index) => {
+        const reps = row.querySelector('.set-reps').value || 10;
+        const rir = row.querySelector('.set-rir').value || 2;
+        sets.push({
+            set: index + 1,
+            reps: parseInt(reps),
+            rir: parseInt(rir)
+        });
+    });
+    
+    // Get day index and save to program data
+    const dayIndex = getDayIndex(currentTargetDay);
+    if (dayIndex !== -1) {
+        const exerciseEntry = {
+            exercise: currentExerciseConfig,
+            sets: sets,
+            id: Date.now() // Unique ID for this exercise instance
+        };
+        programData[dayIndex].push(exerciseEntry);
+        
+        // Add exercise to calendar day with delete button
+        addExerciseToCalendarUI(currentTargetDay, exerciseEntry, dayIndex);
+    }
+    
+    // Update metrics
+    updateMetricsUI();
+    
+    // Trigger auto-save
+    triggerAutoSave();
+    
+    // Close modal
+    exerciseConfigModal.classList.add('hidden');
+    currentExerciseConfig = null;
+    currentTargetDay = null;
+});
+
+// Modify delete function to trigger auto-save
+function deleteExerciseFromDay(dayIndex, exerciseId, exerciseElement, dayElement) {
+    // Remove from programData
+    programData[dayIndex] = programData[dayIndex].filter(entry => entry.id !== exerciseId);
+    
+    // Remove from UI
+    exerciseElement.remove();
+    
+    // If no exercises left, show placeholder
+    const remainingExercises = dayElement.querySelectorAll('.exercise-entry');
+    if (remainingExercises.length === 0) {
+        dayElement.innerHTML = '<span class="text-sm text-gray-400">Drop here</span>';
+    }
+    
+    // Update metrics
+    updateMetricsUI();
+    
+    // Trigger auto-save
+    triggerAutoSave();
+    
+    console.log('Deleted exercise from day', dayIndex);
+}

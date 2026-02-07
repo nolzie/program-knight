@@ -32,9 +32,18 @@
                 </svg>
                 <h1 class="text-2xl font-bold">Program Knight</h1>
             </div>
-            <button class="bg-knight-blue hover:bg-blue-600 px-4 py-2 rounded-lg transition">
-                Export to Excel
-            </button>
+            <div class="flex items-center gap-2">
+                <input type="file" id="import-file-input" accept=".json" class="hidden">
+                <button id="import-program-btn" class="bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-lg transition text-sm">
+                    Import
+                </button>
+                <button id="save-program-btn" class="bg-knight-blue hover:bg-blue-600 px-4 py-2 rounded-lg transition text-sm">
+                    Save
+                </button>
+                <button id="export-program-btn" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg transition text-sm">
+                    Export
+                </button>
+            </div>
         </div>
     </nav>
 
@@ -143,23 +152,110 @@
 
     <!-- Add Exercise Modal -->
     <div id="add-exercise-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-        <div class="bg-white rounded-xl shadow-xl p-6 w-96">
+        <div class="bg-white rounded-xl shadow-xl p-6 w-[500px] max-h-[90vh] overflow-y-auto">
             <h3 class="text-xl font-semibold text-knight-blue-deep mb-4">Add New Exercise</h3>
-            <input type="text" placeholder="Exercise name" class="w-full px-3 py-2 border border-gray-300 rounded-lg mb-3 focus:outline-none focus:ring-2 focus:ring-knight-blue">
-            <select class="w-full px-3 py-2 border border-gray-300 rounded-lg mb-4 focus:outline-none focus:ring-2 focus:ring-knight-blue">
-                <option value="">Select primary muscle...</option>
-                <option value="chest">Chest</option>
-                <option value="back">Back</option>
-                <option value="quads">Quads</option>
-                <option value="hamstrings">Hamstrings</option>
-                <option value="glutes">Glutes</option>
-                <option value="shoulders">Shoulders</option>
-                <option value="biceps">Biceps</option>
-                <option value="triceps">Triceps</option>
-            </select>
-            <div class="flex gap-2 justify-end">
+            
+            <div class="space-y-4">
+                <!-- Exercise Name -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Exercise Name</label>
+                    <input type="text" id="new-exercise-name" placeholder="e.g., Barbell Curl" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-knight-blue">
+                </div>
+                
+                <!-- Primary Muscle -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Primary Muscle</label>
+                    <select id="new-exercise-primary-muscle" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-knight-blue">
+                        <option value="">Select primary muscle...</option>
+                        <option value="Chest">Chest</option>
+                        <option value="Upper Chest">Upper Chest</option>
+                        <option value="Back">Back</option>
+                        <option value="Lats">Lats</option>
+                        <option value="Upper Back">Upper Back</option>
+                        <option value="Quads">Quads</option>
+                        <option value="Hamstrings">Hamstrings</option>
+                        <option value="Glutes">Glutes</option>
+                        <option value="Shoulders">Shoulders</option>
+                        <option value="Side Delts">Side Delts</option>
+                        <option value="Rear Delts">Rear Delts</option>
+                        <option value="Front Delts">Front Delts</option>
+                        <option value="Biceps">Biceps</option>
+                        <option value="Triceps">Triceps</option>
+                        <option value="Brachialis">Brachialis</option>
+                        <option value="Calves">Calves</option>
+                        <option value="Abs">Abs</option>
+                        <option value="Core">Core</option>
+                        <option value="Forearms">Forearms</option>
+                        <option value="Traps">Traps</option>
+                        <option value="Glute Medius">Glute Medius</option>
+                        <option value="Tibialis">Tibialis</option>
+                        <option value="Lower Back">Lower Back</option>
+                    </select>
+                </div>
+                
+                <!-- Movement Pattern -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Movement Pattern</label>
+                    <select id="new-exercise-movement-pattern" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-knight-blue">
+                        <option value="">Select movement pattern...</option>
+                        <option value="horizontal_push">Horizontal Push</option>
+                        <option value="vertical_push">Vertical Push</option>
+                        <option value="horizontal_pull">Horizontal Pull</option>
+                        <option value="vertical_pull">Vertical Pull</option>
+                        <option value="squat">Squat</option>
+                        <option value="hinge">Hinge</option>
+                        <option value="lunge">Lunge</option>
+                        <option value="step_up">Step Up</option>
+                        <option value="carry">Carry</option>
+                        <option value="curl">Curl</option>
+                        <option value="tricep_extension">Tricep Extension</option>
+                        <option value="lateral_raise">Lateral Raise</option>
+                        <option value="face_pull">Face Pull</option>
+                        <option value="shrug">Shrug</option>
+                        <option value="leg_curl">Leg Curl</option>
+                        <option value="leg_extension">Leg Extension</option>
+                        <option value="calf_raise">Calf Raise</option>
+                        <option value="hip_thrust">Hip Thrust</option>
+                        <option value="fly">Fly</option>
+                        <option value="pullover">Pullover</option>
+                        <option value="anti_extension">Anti-Extension</option>
+                        <option value="flexion">Flexion</option>
+                        <option value="tibialis_raise">Tibialis Raise</option>
+                        <option value="wrist_curl">Wrist Curl</option>
+                    </select>
+                </div>
+                
+                <!-- Equipment -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-1">Equipment</label>
+                    <select id="new-exercise-equipment" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-knight-blue">
+                        <option value="">Select equipment...</option>
+                        <option value="barbell">Barbell</option>
+                        <option value="dumbbell">Dumbbell</option>
+                        <option value="cable">Cable</option>
+                        <option value="machine">Machine</option>
+                        <option value="bodyweight">Bodyweight</option>
+                    </select>
+                </div>
+                
+                <!-- Auxiliary Muscles -->
+                <div>
+                    <div class="flex items-center justify-between mb-2">
+                        <label class="block text-sm font-medium text-gray-700">Auxiliary Muscles</label>
+                        <button id="add-aux-muscle-btn" class="text-sm bg-knight-blue text-white px-2 py-1 rounded hover:bg-knight-blue-deep transition">
+                            + Add Muscle
+                        </button>
+                    </div>
+                    <div id="aux-muscles-container" class="space-y-2">
+                        <!-- Auxiliary muscle entries will be added here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="flex gap-2 justify-end mt-6">
                 <button id="cancel-modal" class="px-4 py-2 text-gray-600 hover:bg-gray-100 rounded-lg transition">Cancel</button>
-                <button class="bg-knight-blue text-white px-4 py-2 rounded-lg hover:bg-knight-blue-deep transition">Add Exercise</button>
+                <button id="save-new-exercise" class="bg-knight-blue text-white px-4 py-2 rounded-lg hover:bg-knight-blue-deep transition">Add Exercise</button>
             </div>
         </div>
     </div>
